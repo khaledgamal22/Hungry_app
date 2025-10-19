@@ -14,7 +14,7 @@ class HungryApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Hungry App',
         onGenerateRoute: AppRouter().generateRouter,
-        initialRoute: Routing.splash,
+        initialRoute: Routing.main,
       ),
     );
   }

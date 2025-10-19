@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hungry/core/routes/routing.dart';
+import 'package:hungry/features/main/presentation/views/main_view.dart';
 import 'package:hungry/features/splash/presentation/views/splash_view.dart';
 
 class AppRouter {
@@ -10,6 +11,8 @@ class AppRouter {
     switch (settings.name) {
       case Routing.splash:
         return _buildRoute(SplashView());
+      case Routing.main:
+        return _buildRoute(MainView());
 
       default:
         return _buildRoute(

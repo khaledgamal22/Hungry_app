@@ -19,7 +19,6 @@ class _SplashViewState extends State<SplashView>
   void initState() {
     super.initState();
 
-    // Start animations with small delays
     Future.delayed(const Duration(milliseconds: 400), () {
       setState(() {
         _animateText = true;
@@ -30,6 +29,12 @@ class _SplashViewState extends State<SplashView>
       setState(() {
         _animateImage = true;
       });
+    });
+
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) {
+        // Navigate to the next screen, e.g., LoginView
+      }
     });
   }
 
@@ -42,8 +47,6 @@ class _SplashViewState extends State<SplashView>
       body: Column(
         children: [
           Gap(height * 0.3),
-
-          // Text animation
           AnimatedSlide(
             offset: _animateText ? Offset.zero : const Offset(0, -0.2),
             duration: const Duration(milliseconds: 800),
