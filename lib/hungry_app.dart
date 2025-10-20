@@ -12,6 +12,7 @@ class HungryApp extends StatelessWidget {
       designSize: const Size(430, 932),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(scaffoldBackgroundColor: Colors.white),
         title: 'Hungry App',
         onGenerateRoute: AppRouter().generateRouter,
         initialRoute: Routing.main,

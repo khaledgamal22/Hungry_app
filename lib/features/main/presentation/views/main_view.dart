@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hungry/core/utils/app_colors.dart';
+import 'package:hungry/features/home/presentation/view_models/home/home_cubit.dart';
 import 'package:hungry/features/home/presentation/views/home_view.dart';
 
 class MainView extends StatefulWidget {
@@ -15,7 +17,12 @@ class _MainViewState extends State<MainView> {
   int currentIndex = 0;
   @override
   void initState() {
-    screens = [HomeView(), SizedBox(), SizedBox(), SizedBox()];
+    screens = [
+      BlocProvider(create: (context) => HomeCubit(), child: HomeView()),
+      SizedBox(),
+      SizedBox(),
+      SizedBox(),
+    ];
     super.initState();
   }
 
@@ -53,8 +60,8 @@ class _MainViewState extends State<MainView> {
                 label: 'Cart',
               ),
               BottomNavigationBarItem(
-                icon: const Icon(Icons.favorite_border),
-                label: 'Favorites',
+                icon: const Icon(Icons.local_restaurant),
+                label: 'Orders',
               ),
               BottomNavigationBarItem(
                 icon: const Icon(CupertinoIcons.person),
