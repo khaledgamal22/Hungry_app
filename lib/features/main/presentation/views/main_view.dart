@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hungry/core/utils/app_colors.dart';
+import 'package:hungry/features/cart/presentation/views/cart_view.dart';
 import 'package:hungry/features/home/presentation/view_models/home/home_cubit.dart';
 import 'package:hungry/features/home/presentation/views/home_view.dart';
 
@@ -19,7 +20,7 @@ class _MainViewState extends State<MainView> {
   void initState() {
     screens = [
       BlocProvider(create: (context) => HomeCubit(), child: HomeView()),
-      SizedBox(),
+      CartView(),
       SizedBox(),
       SizedBox(),
     ];

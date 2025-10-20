@@ -14,17 +14,15 @@ class HomeViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         children: [
-          Gap(50),
+          Gap(30),
           HomeHeader(),
           Gap(20),
           SearchTextField(),
           Gap(16),
-          FilterList(),
-          Gap(20),
           Expanded(
             child: ListView(
               physics: const BouncingScrollPhysics(),
-              children: [ProductsGrid(), Gap(30)],
+              children: [FilterList(), Gap(20), ProductsGrid(), Gap(30)],
             ),
           ),
         ],
