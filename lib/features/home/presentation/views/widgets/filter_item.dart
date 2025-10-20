@@ -12,16 +12,6 @@ class FilterItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: isSelected ? AppColors.primary : Color(0xffF3F4F6),
         borderRadius: BorderRadius.circular(25),
-        boxShadow: isSelected
-            ? [
-                BoxShadow(
-                  color: Colors.grey.withValues(alpha: 0.3),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3),
-                ),
-              ]
-            : null,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),

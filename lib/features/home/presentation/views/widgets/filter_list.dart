@@ -11,7 +11,7 @@ class FilterList extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.watch<HomeCubit>();
     return SizedBox(
-      height: 70,
+      height: 50,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
@@ -19,12 +19,9 @@ class FilterList extends StatelessWidget {
             onTap: () {
               cubit.changeFilter(index);
             },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: FilterItem(
-                isSelected: index == cubit.selectedIndex,
-                title: cubit.filters[index],
-              ),
+            child: FilterItem(
+              isSelected: index == cubit.selectedIndex,
+              title: cubit.filters[index],
             ),
           );
         },
