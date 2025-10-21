@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hungry/core/helpers/extentions.dart';
+import 'package:hungry/core/routes/routing.dart';
 import 'package:hungry/features/home/presentation/views/widgets/product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
@@ -14,7 +16,10 @@ class ProductsGrid extends StatelessWidget {
         crossAxisSpacing: 15,
       ),
       itemBuilder: (_, index) {
-        return ProductItem();
+        return GestureDetector(
+          onTap: () => context.pushNamed(Routing.productDetails),
+          child: ProductItem(),
+        );
       },
       itemCount: 6,
       shrinkWrap: true,
