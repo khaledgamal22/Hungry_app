@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hungry/core/routes/routing.dart';
+import 'package:hungry/features/checkout/presentation/views/checkout_view.dart';
 import 'package:hungry/features/main/presentation/views/main_view.dart';
 import 'package:hungry/features/product_details/presentation/views/product_details_view.dart';
 import 'package:hungry/features/splash/presentation/views/splash_view.dart';
@@ -16,6 +17,8 @@ class AppRouter {
         return _buildRoute(MainView());
       case Routing.productDetails:
         return _buildRoute(ProductDetailsView());
+      case Routing.checkout:
+        return _buildRoute(CheckoutView());
 
       default:
         return _buildRoute(

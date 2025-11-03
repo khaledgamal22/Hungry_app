@@ -13,4 +13,6 @@ abstract class AppImages {
   static const String pickels = 'assets/images/pickles.png';
   static const String salad = 'assets/images/salad.png';
   static const String tomato = 'assets/images/tomato.png';
+  static const String visa = 'assets/images/visa.png';
+  static const String dollar = 'assets/images/dollar.png';
 }

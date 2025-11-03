@@ -6,6 +6,6 @@ class ProductDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: ProductDetailsViewBody()));
+    return Scaffold(body: ProductDetailsViewBody());
   }
 }

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:hungry/core/helpers/extentions.dart';
-import 'package:hungry/core/routes/routing.dart';
 import 'package:hungry/core/utils/app_colors.dart';
+import 'package:hungry/features/checkout/presentation/views/widgets/success_dialog.dart';
 
-class CartSummary extends StatelessWidget {
-  const CartSummary({super.key});
+class PaymentSummary extends StatelessWidget {
+  const PaymentSummary({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +54,10 @@ class CartSummary extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  context.pushNamed(Routing.checkout);
+                  showDialog(context: context, builder: (_) => SuccesDialog());
                 },
                 child: const Text(
-                  'Checkout',
+                  'Pay Now',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,

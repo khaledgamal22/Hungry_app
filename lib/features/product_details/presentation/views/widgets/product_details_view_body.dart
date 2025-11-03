@@ -13,7 +13,7 @@ class ProductDetailsViewBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Gap(30),
+        Gap(50),
         Padding(
           padding: const EdgeInsets.only(left: 12),
           child: GestureDetector(
