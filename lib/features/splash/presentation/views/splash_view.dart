@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:hungry/core/helpers/extentions.dart';
+import 'package:hungry/core/routes/routing.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/core/utils/app_images.dart';
 
@@ -33,7 +35,7 @@ class _SplashViewState extends State<SplashView>
 
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
-        // Navigate to the next screen, e.g., LoginView
+        context.pushNamed(Routing.login);
       }
     });
   }

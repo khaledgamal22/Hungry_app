@@ -15,7 +15,7 @@ class HungryApp extends StatelessWidget {
         theme: ThemeData(scaffoldBackgroundColor: Colors.white),
         title: 'Hungry App',
         onGenerateRoute: AppRouter().generateRouter,
-        initialRoute: Routing.main,
+        initialRoute: Routing.splash,
       ),
     );
   }
