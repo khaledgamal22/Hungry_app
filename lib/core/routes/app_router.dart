@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hungry/core/routes/routing.dart';
 import 'package:hungry/core/services/get_it_service.dart';
 import 'package:hungry/features/checkout/presentation/views/checkout_view.dart';
+import 'package:hungry/features/login/data/repos/login_repo.dart';
+import 'package:hungry/features/login/presentation/view_models/login/login_cubit.dart';
 import 'package:hungry/features/login/presentation/views/login_view.dart';
 import 'package:hungry/features/main/presentation/views/main_view.dart';
 import 'package:hungry/features/product_details/presentation/views/product_details_view.dart';
@@ -20,7 +22,12 @@ class AppRouter {
       case Routing.splash:
         return _buildRoute(SplashView());
       case Routing.login:
-        return _buildRoute(LoginView());
+        return _buildRoute(
+          BlocProvider(
+            create: (context) => LoginCubit(getIt<LoginRepo>()),
+            child: LoginView(),
+          ),
+        );
       case Routing.register:
         return _buildRoute(
           BlocProvider(

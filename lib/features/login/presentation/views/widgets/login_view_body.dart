@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/features/login/presentation/views/widgets/dont_have_account.dart';
+import 'package:hungry/features/login/presentation/views/widgets/login_button_bloc_consumer.dart';
 import 'package:hungry/features/login/presentation/views/widgets/login_form.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -28,24 +29,7 @@ class LoginViewBody extends StatelessWidget {
               ),
             ),
             Gap(50),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primary,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                minimumSize: const Size(double.infinity, 50),
-              ),
-              onPressed: () {},
-              child: Text(
-                'Login',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.white,
-                ),
-              ),
-            ),
+            LoginButtonBlocConsumer(),
             Gap(15),
             DontHaveAccount(),
           ],

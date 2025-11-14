@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:hungry/core/database/cache/cache_keys.dart';
+import 'package:hungry/core/database/cache/secure_storage.dart';
 import 'package:hungry/core/helpers/extentions.dart';
 import 'package:hungry/core/routes/routing.dart';
 import 'package:hungry/core/utils/app_colors.dart';
@@ -33,9 +35,18 @@ class _SplashViewState extends State<SplashView>
       });
     });
 
-    Future.delayed(const Duration(seconds: 2), () {
+    initNavigation();
+  }
+
+  void initNavigation() {
+    Future.delayed(const Duration(seconds: 2), () async {
+      final token = await SecureStorage.instance.getData(key: CacheKeys.token);
       if (mounted) {
-        context.pushNamed(Routing.login);
+        if (token != null) {
+          context.pushReplacementNamed(Routing.main);
+        } else {
+          context.pushReplacementNamed(Routing.login);
+        }
       }
     });
   }
