@@ -8,6 +8,7 @@ class RegisterButtonBlocConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<RegisterCubit>();
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterSuccess) {
@@ -38,7 +39,9 @@ class RegisterButtonBlocConsumer extends StatelessWidget {
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 onPressed: () {
-                  context.read<RegisterCubit>().register();
+                  if (cubit.formKey.currentState!.validate()) {
+                    context.read<RegisterCubit>().register();
+                  }
                 },
                 child: Text(
                   'Register',
