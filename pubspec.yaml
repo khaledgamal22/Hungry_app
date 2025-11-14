@@ -31,6 +31,8 @@ dependencies:
   animated_notch_bottom_bar: ^1.0.3
   bloc: ^9.0.1
   cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  dio: ^5.9.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
@@ -38,9 +40,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_screenutil: ^5.9.3
+  flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.2.1
   gap: ^3.0.1
   get_it: ^8.2.0
+  image_picker: ^1.2.1
+  pretty_dio_logger: ^1.4.0
   shared_preferences: ^2.5.3
 
 dev_dependencies:
