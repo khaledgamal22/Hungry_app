@@ -10,6 +10,8 @@ import 'package:hungry/features/login/data/repos/login_repo.dart';
 import 'package:hungry/features/login/presentation/view_models/login/login_cubit.dart';
 import 'package:hungry/features/login/presentation/views/login_view.dart';
 import 'package:hungry/features/main/presentation/views/main_view.dart';
+import 'package:hungry/features/product_details/data/repos/get_product_details_repo.dart';
+import 'package:hungry/features/product_details/presentation/view_models/product_details/product_details_cubit.dart';
 import 'package:hungry/features/product_details/presentation/views/product_details_view.dart';
 import 'package:hungry/features/register/data/repos/register_repo.dart';
 import 'package:hungry/features/register/presentation/view_models/register/register_cubit.dart';
@@ -38,7 +40,15 @@ class AppRouter {
       case Routing.main:
         return _buildRoute(MainView());
       case Routing.productDetails:
-        return _buildRoute(ProductDetailsView());
+        final productId = settings.arguments as int;
+        return _buildRoute(
+          BlocProvider(
+            create: (context) =>
+                ProductDetailsCubit(getIt<GetProductDetailsRepo>())
+                  ..getProductDetails(productId: productId),
+            child: ProductDetailsView(),
+          ),
+        );
       case Routing.checkout:
         return _buildRoute(CheckoutView());
 

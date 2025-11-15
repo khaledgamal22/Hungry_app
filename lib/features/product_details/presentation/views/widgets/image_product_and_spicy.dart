@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/core/utils/app_images.dart';
+import 'package:hungry/features/home/data/models/product_model.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class ImageProductAndSpicy extends StatefulWidget {
-  const ImageProductAndSpicy({super.key});
+  const ImageProductAndSpicy({super.key, required this.productModel});
+  final ProductModel productModel;
 
   @override
   State<ImageProductAndSpicy> createState() => _ImageProductAndSpicyState();
@@ -18,7 +21,11 @@ class _ImageProductAndSpicyState extends State<ImageProductAndSpicy> {
       padding: const EdgeInsets.only(right: 12),
       child: Row(
         children: [
-          Flexible(child: Image.asset(AppImages.productDetails)),
+          Flexible(
+            child: Skeleton.ignore(
+              child: Image.network(widget.productModel.image),
+            ),
+          ),
           Gap(30),
           Expanded(
             child: Column(
@@ -56,15 +63,17 @@ class _ImageProductAndSpicyState extends State<ImageProductAndSpicy> {
                   ),
                 ),
                 Gap(10),
-                Slider(
-                  value: sliderValue,
-                  onChanged: (value) {
-                    setState(() {
-                      sliderValue = value;
-                    });
-                  },
-                  inactiveColor: Colors.grey,
-                  activeColor: AppColors.primary,
+                Skeleton.ignore(
+                  child: Slider(
+                    value: sliderValue,
+                    onChanged: (value) {
+                      setState(() {
+                        sliderValue = value;
+                      });
+                    },
+                    inactiveColor: Colors.grey,
+                    activeColor: AppColors.primary,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
