@@ -8,6 +8,9 @@ import 'package:hungry/features/home/data/repos/get_categories_repo/get_categori
 import 'package:hungry/features/home/data/repos/get_products_repo/get_products_repo.dart';
 import 'package:hungry/features/home/presentation/view_models/home/home_cubit.dart';
 import 'package:hungry/features/home/presentation/views/home_view.dart';
+import 'package:hungry/features/profile/data/repos/get_user_profile_repo.dart';
+import 'package:hungry/features/profile/presentation/view_models/profile/profile_cubit.dart';
+import 'package:hungry/features/profile/presentation/views/profile_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -34,7 +37,10 @@ class _MainViewState extends State<MainView> {
       ),
       CartView(),
       SizedBox(),
-      SizedBox(),
+      BlocProvider(
+        create: (context) => ProfileCubit(getIt<GetUserProfileRepo>()),
+        child: ProfileViews(),
+      ),
     ];
     super.initState();
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hungry/core/database/cache/cache_helper.dart';
+import 'package:hungry/core/database/cache/cache_keys.dart';
+import 'package:hungry/core/services/get_it_service.dart';
 import 'package:hungry/core/utils/app_colors.dart';
-import 'package:hungry/core/utils/app_images.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
@@ -23,7 +25,7 @@ class HomeHeader extends StatelessWidget {
               ),
             ),
             Text(
-              'Hello, Rich Sonic',
+              'Hello, ${getIt<CacheHelper>().getString(key: CacheKeys.name)}',
               style: TextStyle(color: Color(0xff6A6A6A), fontSize: 18),
             ),
           ],
@@ -35,7 +37,9 @@ class HomeHeader extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
-              image: AssetImage(AppImages.profilePicture),
+              image: NetworkImage(
+                getIt<CacheHelper>().getString(key: CacheKeys.profileImage)!,
+              ),
               fit: BoxFit.cover,
             ),
           ),

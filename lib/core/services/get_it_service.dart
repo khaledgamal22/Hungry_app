@@ -11,6 +11,8 @@ import 'package:hungry/features/login/data/repos/login_repo.dart';
 import 'package:hungry/features/login/data/repos/login_repo_impl.dart';
 import 'package:hungry/features/product_details/data/repos/get_product_details_repo.dart';
 import 'package:hungry/features/product_details/data/repos/get_product_details_repo_impl.dart';
+import 'package:hungry/features/profile/data/repos/get_user_profile_repo.dart';
+import 'package:hungry/features/profile/data/repos/get_user_profile_repo_impl.dart';
 import 'package:hungry/features/register/data/repos/register_repo.dart';
 import 'package:hungry/features/register/data/repos/register_repo_impl.dart';
 
@@ -35,5 +37,8 @@ void setupGetItService() {
   );
   getIt.registerLazySingleton<GetProductDetailsRepo>(
     () => GetProductDetailsRepoImpl(apiConsumer: getIt<ApiConsumer>()),
+  );
+  getIt.registerLazySingleton<GetUserProfileRepo>(
+    () => GetUserProfileRepoImpl(apiConsumer: getIt<ApiConsumer>()),
   );
 }

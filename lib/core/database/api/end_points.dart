@@ -8,4 +8,5 @@ class EndPoints {
   static const String getProductDetails = 'products';
   static const String addOrRemoveFavorite = 'toggle-favorite';
   static const String getFavorites = 'favorites';
+  static const String getUserProfile = 'profile';
 }
