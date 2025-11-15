@@ -5,6 +5,8 @@ import 'package:hungry/core/database/api/dio_factory.dart';
 import 'package:hungry/core/database/cache/cache_helper.dart';
 import 'package:hungry/features/home/data/repos/get_categories_repo/get_categories_repo.dart';
 import 'package:hungry/features/home/data/repos/get_categories_repo/get_categories_repo_impl.dart';
+import 'package:hungry/features/home/data/repos/get_products_repo/get_products_repo.dart';
+import 'package:hungry/features/home/data/repos/get_products_repo/get_products_repo_impl.dart';
 import 'package:hungry/features/login/data/repos/login_repo.dart';
 import 'package:hungry/features/login/data/repos/login_repo_impl.dart';
 import 'package:hungry/features/register/data/repos/register_repo.dart';
@@ -25,5 +27,8 @@ void setupGetItService() {
   );
   getIt.registerLazySingleton<GetCategoriesRepo>(
     () => GetCategoriesRepoImpl(apiConsumer: getIt<ApiConsumer>()),
+  );
+  getIt.registerLazySingleton<GetProductsRepo>(
+    () => GetProductsRepoImpl(apiConsumer: getIt<ApiConsumer>()),
   );
 }

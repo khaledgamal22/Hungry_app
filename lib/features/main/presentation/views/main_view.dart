@@ -5,6 +5,7 @@ import 'package:hungry/core/services/get_it_service.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/features/cart/presentation/views/cart_view.dart';
 import 'package:hungry/features/home/data/repos/get_categories_repo/get_categories_repo.dart';
+import 'package:hungry/features/home/data/repos/get_products_repo/get_products_repo.dart';
 import 'package:hungry/features/home/presentation/view_models/home/home_cubit.dart';
 import 'package:hungry/features/home/presentation/views/home_view.dart';
 
@@ -23,8 +24,12 @@ class _MainViewState extends State<MainView> {
     screens = [
       BlocProvider(
         create: (context) =>
-            HomeCubit(getCategoriesRepo: getIt<GetCategoriesRepo>())
-              ..getCategories(),
+            HomeCubit(
+                getCategoriesRepo: getIt<GetCategoriesRepo>(),
+                getProductsRepo: getIt<GetProductsRepo>(),
+              )
+              ..getCategories()
+              ..getProducts(),
         child: HomeView(),
       ),
       CartView(),

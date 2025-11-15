@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/utils/app_colors.dart';
-import 'package:hungry/core/utils/app_images.dart';
+import 'package:hungry/features/home/data/models/product_model.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.productModel});
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +34,17 @@ class ProductItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Flexible(child: Center(child: Image.asset(AppImages.pngwing))),
+            Flexible(
+              child: Skeleton.ignore(
+                child: Center(child: Image.network(productModel.image)),
+              ),
+            ),
             Gap(5),
             Text(
-              'Cheeseburger',
+              productModel.name,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: AppColors.white,
-              ),
-            ),
-            Text(
-              "Wendy's Burger",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
                 color: AppColors.white,
               ),
             ),
@@ -55,7 +53,7 @@ class ProductItem extends StatelessWidget {
                 Icon(Icons.star, color: Colors.amber, size: 20),
                 Gap(5),
                 Text(
-                  '4.5',
+                  productModel.rating,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
