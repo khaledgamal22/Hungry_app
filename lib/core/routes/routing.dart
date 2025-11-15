@@ -6,4 +6,5 @@ abstract class Routing {
   static const String main = '/main';
   static const String productDetails = '/productDetails';
   static const String checkout = '/checkout';
+  static const String favorite = '/favorite';
 }

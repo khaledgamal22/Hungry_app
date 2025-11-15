@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/database/cache/cache_helper.dart';
 import 'package:hungry/core/database/cache/cache_keys.dart';
+import 'package:hungry/core/helpers/extentions.dart';
+import 'package:hungry/core/routes/routing.dart';
 import 'package:hungry/core/services/get_it_service.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/features/profile/presentation/view_models/profile/profile_cubit.dart';
@@ -45,7 +47,7 @@ class ProfileViewBody extends StatelessWidget {
                   leading: Icon(Icons.favorite, color: AppColors.primary),
                   title: Text('Favorites'),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () {},
+                  onTap: () => context.pushNamed(Routing.favorite),
                 ),
                 ListTile(
                   leading: Icon(Icons.logout, color: AppColors.red),
