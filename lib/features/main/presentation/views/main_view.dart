@@ -11,6 +11,8 @@ import 'package:hungry/features/home/presentation/views/home_view.dart';
 import 'package:hungry/features/profile/data/repos/get_user_profile_repo.dart';
 import 'package:hungry/features/profile/presentation/view_models/profile/profile_cubit.dart';
 import 'package:hungry/features/profile/presentation/views/profile_view.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -20,79 +22,82 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  late List<Widget> screens;
-  int currentIndex = 0;
-  @override
-  void initState() {
-    screens = [
-      BlocProvider(
-        create: (context) =>
-            HomeCubit(
-                getCategoriesRepo: getIt<GetCategoriesRepo>(),
-                getProductsRepo: getIt<GetProductsRepo>(),
-              )
-              ..getCategories()
-              ..getProducts(),
-        child: HomeView(),
+  final PersistentTabController controller = PersistentTabController(
+    initialIndex: 0,
+  );
+
+  List<Widget> _screens() {
+    return [HomeView(), CartView(), SizedBox(), ProfileViews()];
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: const Icon(CupertinoIcons.home),
+        title: "Home",
+        activeColorPrimary: AppColors.white,
+        inactiveColorPrimary: Colors.grey,
       ),
-      CartView(),
-      SizedBox(),
-      BlocProvider(
-        create: (context) => ProfileCubit(getIt<GetUserProfileRepo>()),
-        child: ProfileViews(),
+      PersistentBottomNavBarItem(
+        icon: const Icon(CupertinoIcons.cart),
+        title: "Cart",
+        activeColorPrimary: AppColors.white,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.local_restaurant),
+        title: "Orders",
+        activeColorPrimary: AppColors.white,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(CupertinoIcons.person),
+        title: "Profile",
+        activeColorPrimary: AppColors.white,
+        inactiveColorPrimary: Colors.grey,
       ),
     ];
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex],
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) =>
+              HomeCubit(
+                  getCategoriesRepo: getIt<GetCategoriesRepo>(),
+                  getProductsRepo: getIt<GetProductsRepo>(),
+                )
+                ..getCategories()
+                ..getProducts(),
         ),
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-          ),
-          child: BottomNavigationBar(
-            elevation: 0,
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.transparent,
-            selectedItemColor: AppColors.white,
-            unselectedItemColor: Colors.grey,
-            items: [
-              BottomNavigationBarItem(
-                icon: const Icon(CupertinoIcons.home),
-                label: 'Home',
+        BlocProvider(create: (_) => ProfileCubit(getIt<GetUserProfileRepo>())),
+      ],
+      child: LiquidGlassLayer(
+        settings: LiquidGlassSettings(
+          glassColor: AppColors.white.withValues(alpha: 0.2),
+          thickness: 20,
+          blur: 15,
+        ),
+        child: LiquidGlass(
+          shape: LiquidRoundedRectangle(borderRadius: 20),
+          child: PersistentTabView(
+            context,
+            controller: controller,
+            screens: _screens(),
+            items: _navBarsItems(),
+            navBarStyle: NavBarStyle.style6,
+            backgroundColor: AppColors.primary,
+            decoration: NavBarDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
               ),
-              BottomNavigationBarItem(
-                icon: const Icon(CupertinoIcons.cart),
-                label: 'Cart',
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.local_restaurant),
-                label: 'Orders',
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(CupertinoIcons.person),
-                label: 'Profile',
-              ),
-            ],
-            currentIndex: currentIndex,
-            onTap: (index) {
-              setState(() {
-                currentIndex = index;
-              });
-            },
+            ),
+            navBarHeight: kBottomNavigationBarHeight + 10,
+            padding: const EdgeInsets.only(top: 12),
+            bottomScreenMargin: 0,
           ),
         ),
       ),

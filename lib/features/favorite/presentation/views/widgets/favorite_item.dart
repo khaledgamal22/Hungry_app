@@ -4,17 +4,17 @@ import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/features/home/data/models/product_model.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class ProductItem extends StatefulWidget {
-  const ProductItem({super.key, required this.productModel});
+class FavoriteItem extends StatefulWidget {
+  const FavoriteItem({super.key, required this.productModel});
   final ProductModel productModel;
 
   @override
-  State<ProductItem> createState() => _ProductItemState();
+  State<FavoriteItem> createState() => _FavoriteItemState();
 }
 
-bool isSelected = false;
+bool isSelected = true;
 
-class _ProductItemState extends State<ProductItem> {
+class _FavoriteItemState extends State<FavoriteItem> {
   @override
   Widget build(BuildContext context) {
     return Container(

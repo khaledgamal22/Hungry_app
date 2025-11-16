@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hungry/core/helpers/extentions.dart';
 import 'package:hungry/core/routes/routing.dart';
 import 'package:hungry/features/favorite/presentation/view_models/favorite/favorite_cubit.dart';
-import 'package:hungry/features/home/presentation/views/widgets/product_item.dart';
+import 'package:hungry/features/favorite/presentation/views/widgets/favorite_item.dart';
 import 'package:hungry/features/home/presentation/views/widgets/products_loading_indicator_grid.dart';
 
 class FavoriteViewBody extends StatelessWidget {
@@ -29,7 +29,7 @@ class FavoriteViewBody extends StatelessWidget {
                     Routing.productDetails,
                     argument: state.favoriteProducts[index].id,
                   ),
-                  child: ProductItem(
+                  child: FavoriteItem(
                     productModel: state.favoriteProducts[index],
                   ),
                 );

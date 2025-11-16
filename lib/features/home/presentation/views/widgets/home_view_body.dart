@@ -22,7 +22,7 @@ class HomeViewBody extends StatelessWidget {
           Expanded(
             child: ListView(
               physics: const BouncingScrollPhysics(),
-              children: [FilterList(), Gap(20), ProductsGrid(), Gap(30)],
+              children: [FilterList(), Gap(20), ProductsGrid(), Gap(10)],
             ),
           ),
         ],
