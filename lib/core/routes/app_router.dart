@@ -55,13 +55,7 @@ class AppRouter {
       case Routing.checkout:
         return _buildRoute(CheckoutView());
       case Routing.favorite:
-        return _buildRoute(
-          BlocProvider(
-            create: (context) =>
-                FavoriteCubit(getIt<GetFavoriteRepo>())..getFavoriteProducts(),
-            child: FavoriteView(),
-          ),
-        );
+        return _buildRoute(FavoriteView());
 
       default:
         return _buildRoute(

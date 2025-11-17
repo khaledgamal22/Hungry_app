@@ -30,7 +30,7 @@ class ProductsGrid extends StatelessWidget {
             ),
             itemBuilder: (_, index) {
               return GestureDetector(
-                onTap: () => context.pushNamed(
+                onTap: () => context.pushNamedRoot(
                   Routing.productDetails,
                   argument: state.productsList[index].id,
                 ),

@@ -9,6 +9,7 @@ import 'package:hungry/features/home/data/repos/get_categories_repo/get_categori
 import 'package:hungry/features/home/data/repos/get_categories_repo/get_categories_repo_impl.dart';
 import 'package:hungry/features/home/data/repos/get_products_repo/get_products_repo.dart';
 import 'package:hungry/features/home/data/repos/get_products_repo/get_products_repo_impl.dart';
+import 'package:hungry/features/home/presentation/view_models/home/home_cubit.dart';
 import 'package:hungry/features/login/data/repos/login_repo.dart';
 import 'package:hungry/features/login/data/repos/login_repo_impl.dart';
 import 'package:hungry/features/product_details/data/repos/get_product_details_repo.dart';
@@ -45,5 +46,11 @@ void setupGetItService() {
   );
   getIt.registerLazySingleton<GetFavoriteRepo>(
     () => GetFavoriteRepoImpl(apiConsumer: getIt<ApiConsumer>()),
+  );
+  getIt.registerSingleton<HomeCubit>(
+    HomeCubit(
+      getCategoriesRepo: getIt<GetCategoriesRepo>(),
+      getProductsRepo: getIt<GetProductsRepo>(),
+    ),
   );
 }

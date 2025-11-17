@@ -10,10 +10,10 @@ class ToppingList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<ToppingModel> toppings = [
-      ToppingModel(name: 'Tomato', image: AppImages.tomato),
-      ToppingModel(name: 'Onions', image: AppImages.onion),
-      ToppingModel(name: 'Pickles', image: AppImages.pickels),
-      ToppingModel(name: 'Bacons', image: AppImages.bacons),
+      ToppingModel(id: 1, name: 'Tomato', image: AppImages.tomato),
+      ToppingModel(id: 2, name: 'Onions', image: AppImages.onion),
+      ToppingModel(id: 3, name: 'Pickles', image: AppImages.pickels),
+      ToppingModel(id: 4, name: 'Bacons', image: AppImages.bacons),
     ];
     return SizedBox(
       height: 150,

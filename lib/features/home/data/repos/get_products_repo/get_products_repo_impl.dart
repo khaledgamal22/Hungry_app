@@ -27,4 +27,34 @@ class GetProductsRepoImpl implements GetProductsRepo {
       return Left(ApiErrorHandler.handleError(e));
     }
   }
+
+  @override
+  Future<Either<ApiErrorModel, List<ProductModel>>>
+  getFavoriteProducts() async {
+    try {
+      final response = await apiConsumer.get(EndPoints.getFavorites);
+      final List<ProductModel> products = (response.data['data'] as List)
+          .map((e) => ProductModel.fromJson(e))
+          .toList();
+      return Right(products);
+    } catch (e) {
+      return Left(ApiErrorHandler.handleError(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiErrorModel, String>> toggleFavoriteStatus({
+    required int productId,
+  }) async {
+    try {
+      final response = await apiConsumer.post(
+        EndPoints.toggleFavorite,
+        data: {'product_id': productId},
+      );
+      final String message = response.data['message'];
+      return Right(message);
+    } catch (e) {
+      return Left(ApiErrorHandler.handleError(e));
+    }
+  }
 }

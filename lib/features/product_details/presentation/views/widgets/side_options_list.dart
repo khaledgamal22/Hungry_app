@@ -10,10 +10,10 @@ class SideOptionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<ToppingModel> sideOptions = [
-      ToppingModel(name: 'Fries', image: AppImages.fries),
-      ToppingModel(name: 'Coleslaw', image: AppImages.coleslaw),
-      ToppingModel(name: 'Salad', image: AppImages.salad),
-      ToppingModel(name: 'Onion', image: AppImages.friesOnion),
+      ToppingModel(id: 1, name: 'Fries', image: AppImages.fries),
+      ToppingModel(id: 2, name: 'Coleslaw', image: AppImages.coleslaw),
+      ToppingModel(id: 3, name: 'Salad', image: AppImages.salad),
+      ToppingModel(id: 4, name: 'Onion', image: AppImages.friesOnion),
     ];
     return SizedBox(
       height: 150,

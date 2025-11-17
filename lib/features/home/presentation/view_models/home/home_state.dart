@@ -30,3 +30,10 @@ final class GetCategoriesFailure extends HomeState {
 }
 
 final class FilterChangedState extends HomeState {}
+
+final class GetFavoriteSuccess extends HomeState {}
+
+final class ToggleFavoriteSuccess extends HomeState {
+  final String message;
+  ToggleFavoriteSuccess({required this.message});
+}

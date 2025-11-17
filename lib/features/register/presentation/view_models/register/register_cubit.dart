@@ -51,4 +51,13 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(ProfileImagePickedFailed());
     }
   }
+
+  @override
+  Future<void> close() {
+    nameController.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
+  }
 }

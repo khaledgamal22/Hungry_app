@@ -6,4 +6,8 @@ abstract class GetProductsRepo {
   Future<Either<ApiErrorModel, List<ProductModel>>> getProducts({
     int? categoryId,
   });
+  Future<Either<ApiErrorModel, List<ProductModel>>> getFavoriteProducts();
+  Future<Either<ApiErrorModel, String>> toggleFavoriteStatus({
+    required int productId,
+  });
 }

@@ -47,7 +47,7 @@ class ProfileViewBody extends StatelessWidget {
                   leading: Icon(Icons.favorite, color: AppColors.primary),
                   title: Text('Favorites'),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () => context.pushNamed(Routing.favorite),
+                  onTap: () => context.pushNamedRoot(Routing.favorite),
                 ),
                 ListTile(
                   leading: Icon(Icons.logout, color: AppColors.red),

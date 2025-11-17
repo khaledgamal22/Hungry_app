@@ -6,7 +6,7 @@ class EndPoints {
   static const String getCategories = 'categories';
   static const String getProducts = 'products';
   static const String getProductDetails = 'products';
-  static const String addOrRemoveFavorite = 'toggle-favorite';
+  static const String toggleFavorite = 'toggle-favorite';
   static const String getFavorites = 'favorites';
   static const String getUserProfile = 'profile';
 }

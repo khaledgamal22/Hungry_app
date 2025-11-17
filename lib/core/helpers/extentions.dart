@@ -11,6 +11,13 @@ extension Navigation on BuildContext {
     ).pushReplacementNamed(routeName, arguments: argument);
   }
 
+  Future<dynamic> pushNamedRoot(String routeName, {Object? argument}) {
+    return Navigator.of(
+      this,
+      rootNavigator: true,
+    ).pushNamed(routeName, arguments: argument);
+  }
+
   Future<dynamic> pushNamedAndRemoveUntil(
     String routeName, {
     Object? argument,

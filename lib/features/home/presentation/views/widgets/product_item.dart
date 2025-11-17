@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/features/home/data/models/product_model.dart';
+import 'package:hungry/features/home/presentation/views/widgets/favorite_icon.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class ProductItem extends StatefulWidget {
+class ProductItem extends StatelessWidget {
   const ProductItem({super.key, required this.productModel});
   final ProductModel productModel;
 
-  @override
-  State<ProductItem> createState() => _ProductItemState();
-}
-
-bool isSelected = false;
-
-class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,12 +37,12 @@ class _ProductItemState extends State<ProductItem> {
           children: [
             Flexible(
               child: Skeleton.ignore(
-                child: Center(child: Image.network(widget.productModel.image)),
+                child: Center(child: Image.network(productModel.image)),
               ),
             ),
             Gap(5),
             Text(
-              widget.productModel.name,
+              productModel.name,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -60,7 +54,7 @@ class _ProductItemState extends State<ProductItem> {
                 Icon(Icons.star, color: Colors.amber, size: 20),
                 Gap(5),
                 Text(
-                  widget.productModel.rating,
+                  productModel.rating,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
@@ -68,15 +62,9 @@ class _ProductItemState extends State<ProductItem> {
                   ),
                 ),
                 Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isSelected = !isSelected;
-                    });
-                  },
-                  child: isSelected
-                      ? Icon(Icons.favorite, color: AppColors.red)
-                      : Icon(Icons.favorite_border, color: AppColors.white),
+                FavoriteIcon(
+                  isFavoriteProduct: productModel.isFavorite,
+                  productId: productModel.id,
                 ),
               ],
             ),

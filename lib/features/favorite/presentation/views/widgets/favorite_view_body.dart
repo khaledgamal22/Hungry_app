@@ -14,6 +14,9 @@ class FavoriteViewBody extends StatelessWidget {
     return BlocBuilder<FavoriteCubit, FavoriteState>(
       builder: (context, state) {
         if (state is FavoriteSuccess) {
+          if (state.favoriteProducts.isEmpty) {
+            return Center(child: Text('No favorite products found'));
+          }
           return Padding(
             padding: const EdgeInsets.only(top: 30, left: 12, right: 12),
             child: GridView.builder(
