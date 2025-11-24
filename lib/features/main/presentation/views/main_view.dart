@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hungry/core/services/get_it_service.dart';
 import 'package:hungry/core/utils/app_colors.dart';
+import 'package:hungry/features/cart/data/repos/get_cart_products_repo.dart';
+import 'package:hungry/features/cart/presentation/view_models/cart/cart_cubit.dart';
 import 'package:hungry/features/cart/presentation/views/cart_view.dart';
 import 'package:hungry/features/home/presentation/view_models/home/home_cubit.dart';
 import 'package:hungry/features/home/presentation/views/home_view.dart';
@@ -31,7 +33,11 @@ class _MainViewState extends State<MainView> {
           ..getProducts(),
         child: HomeView(),
       ),
-      CartView(),
+      BlocProvider(
+        create: (context) =>
+            CartCubit(getIt<GetCartProductsRepo>())..getCartProducts(),
+        child: CartView(),
+      ),
       SizedBox(),
       BlocProvider(
         create: (context) => ProfileCubit(getIt<GetUserProfileRepo>()),

@@ -9,4 +9,5 @@ class EndPoints {
   static const String toggleFavorite = 'toggle-favorite';
   static const String getFavorites = 'favorites';
   static const String getUserProfile = 'profile';
+  static const String getCartProducts = 'cart';
 }

@@ -5,7 +5,8 @@ import 'package:hungry/core/routes/routing.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 
 class CartSummary extends StatelessWidget {
-  const CartSummary({super.key});
+  const CartSummary({super.key, required this.price});
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class CartSummary extends StatelessWidget {
                 ),
                 Gap(5),
                 Text(
-                  '\$10.00',
+                  '\$$price',
                   style: TextStyle(
                     color: AppColors.primary,
                     fontSize: 32,
