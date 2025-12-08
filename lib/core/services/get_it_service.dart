@@ -14,6 +14,8 @@ import 'package:hungry/features/home/data/repos/get_products_repo/get_products_r
 import 'package:hungry/features/home/presentation/view_models/home/home_cubit.dart';
 import 'package:hungry/features/login/data/repos/login_repo.dart';
 import 'package:hungry/features/login/data/repos/login_repo_impl.dart';
+import 'package:hungry/features/product_details/data/repos/add_to_cart_repo.dart';
+import 'package:hungry/features/product_details/data/repos/add_to_cart_repo_impl.dart';
 import 'package:hungry/features/product_details/data/repos/get_product_details_repo.dart';
 import 'package:hungry/features/product_details/data/repos/get_product_details_repo_impl.dart';
 import 'package:hungry/features/profile/data/repos/get_user_profile_repo.dart';
@@ -57,5 +59,8 @@ void setupGetItService() {
   );
   getIt.registerLazySingleton<GetCartProductsRepo>(
     () => GetCartProductsRepoImpl(apiConsumer: getIt<ApiConsumer>()),
+  );
+  getIt.registerLazySingleton<AddToCartRepo>(
+    () => AddToCartRepoImpl(apiConsumer: getIt<ApiConsumer>()),
   );
 }

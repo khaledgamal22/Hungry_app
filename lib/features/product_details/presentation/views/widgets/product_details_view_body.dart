@@ -9,11 +9,19 @@ import 'package:hungry/features/product_details/presentation/views/widgets/produ
 import 'package:hungry/features/product_details/presentation/views/widgets/scrollable_list_details.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
-  const ProductDetailsViewBody({super.key});
+  const ProductDetailsViewBody({super.key, required this.productId});
+  final int productId;
 
   @override
   Widget build(BuildContext context) {
+    context.read<ProductDetailsCubit>().initializeAddToCartModel(
+      productId: productId,
+    );
     return BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
+      buildWhen: (previous, current) =>
+          current is ProductDetailsSuccess ||
+          current is ProductDetailsFailure ||
+          current is ProductDetailsLoading,
       builder: (context, state) {
         if (state is ProductDetailsSuccess) {
           return Column(

@@ -10,4 +10,6 @@ class EndPoints {
   static const String getFavorites = 'favorites';
   static const String getUserProfile = 'profile';
   static const String getCartProducts = 'cart';
+  static const String addToCart = 'cart/add';
+  static const String removeFromCart = 'cart/add';
 }

@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/features/product_details/data/models/topping_model.dart';
-import 'package:hungry/features/product_details/presentation/view_models/product_details/product_details_cubit.dart';
 
-class ToppingCard extends StatelessWidget {
-  const ToppingCard({super.key, required this.toppingModel});
+import '../../view_models/product_details/product_details_cubit.dart';
+
+class SideOptionCard extends StatelessWidget {
+  const SideOptionCard({super.key, required this.toppingModel});
 
   final ToppingModel toppingModel;
 
@@ -15,8 +16,7 @@ class ToppingCard extends StatelessWidget {
     return BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
       builder: (context, state) {
         final cubit = context.read<ProductDetailsCubit>();
-        final bool isSelected = cubit.toppings.contains(toppingModel.id);
-
+        final bool isSelected = cubit.sideOptions.contains(toppingModel.id);
         return Container(
           width: 125,
           decoration: BoxDecoration(
@@ -61,10 +61,11 @@ class ToppingCard extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
+                    Gap(5),
                     Spacer(),
                     GestureDetector(
                       onTap: () {
-                        cubit.addTopping(toppingModel.id);
+                        cubit.addSideOption(toppingModel.id);
                       },
                       child: Icon(
                         isSelected ? Icons.check_circle : Icons.add_circle,

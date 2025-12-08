@@ -17,3 +17,20 @@ final class ProductDetailsFailure extends ProductDetailsState {
   final String errorMessage;
   ProductDetailsFailure({required this.errorMessage});
 }
+
+final class AddToCartSuccess extends ProductDetailsState {
+  final String message;
+  AddToCartSuccess({required this.message});
+}
+
+final class AddToCartFailure extends ProductDetailsState {
+  final String errorMessage;
+  AddToCartFailure({required this.errorMessage});
+}
+
+final class AddToCartUpdated extends ProductDetailsState {}
+
+final class AddToCartLoading extends ProductDetailsState {}
+
+// final class ToppingAdded extends ProductDetailsState {}
+// final class SideOptionAdded extends ProductDetailsState {}

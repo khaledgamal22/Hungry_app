@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/utils/app_colors.dart';
 import 'package:hungry/core/utils/app_images.dart';
 import 'package:hungry/features/home/data/models/product_model.dart';
+import 'package:hungry/features/product_details/presentation/view_models/product_details/product_details_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ImageProductAndSpicy extends StatefulWidget {
@@ -67,8 +69,10 @@ class _ImageProductAndSpicyState extends State<ImageProductAndSpicy> {
                   child: Slider(
                     value: sliderValue,
                     onChanged: (value) {
+                      final cubit = context.read<ProductDetailsCubit>();
                       setState(() {
                         sliderValue = value;
+                        cubit.spicy = value;
                       });
                     },
                     inactiveColor: Colors.grey,
